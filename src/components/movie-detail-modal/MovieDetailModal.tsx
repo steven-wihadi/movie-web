@@ -17,7 +17,6 @@ const MovieDetailModal = ({ movieId, isShow, onClose }: MovieDetailModalProps) =
   useEffect(() => {
     if (isShow) {
       usecase.getMovieDetail({ movieId }).then(res => {
-        console.log('==res: ', res);
         setMovieDetail(res);
         setIsFetch(true);
       });

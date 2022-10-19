@@ -59,6 +59,7 @@ function App() {
                 setMovieId(movie.imdbID);
                 setIsModalShow(true);
               }}
+              isFavorite={false}
             />
           )
         }
