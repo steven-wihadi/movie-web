@@ -3,14 +3,17 @@ import Header from './components/header/Header';
 import { useState } from 'react';
 import MovieCard from './components/movie-card/MovieCard';
 import AppImplementator from './App.impl';
-import { SEARCH_MOVIE_TAB } from './components/header/constant';
+import { DEFAULT_MOVIE_KEYWORD, SEARCH_MOVIE_TAB } from './components/header/constant';
+import MovieDetailModal from './components/movie-detail-modal/MovieDetailModal';
 
 function App() {
   const usecase = new AppImplementator();
   const [movieList, setMovieList] = useState([]);
   const [bodyMassage, setBodyMessage] = useState('');
+  const [movieId, setMovieId] = useState('');
+  const [isModalShow, setIsModalShow] = useState(false);
 
-  const fetchList = (keyword = 'army') => {
+  const fetchList = (keyword = DEFAULT_MOVIE_KEYWORD) => {
     const params = {
       keyword,
       page: 1,
@@ -31,7 +34,7 @@ function App() {
     console.log('===tabName: ', tabName);
     switch(tabName) {
       case SEARCH_MOVIE_TAB:
-        fetchList('army');
+        fetchList(DEFAULT_MOVIE_KEYWORD);
         break;
     }
   }
@@ -41,7 +44,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={"App" + (isModalShow ? ' freeze-scroll' : '')}>
       <Header onChangeTab={onChangeTab} onSearch={onSearch} />
       
       <div className='body-container'>
@@ -52,6 +55,10 @@ function App() {
               poster={movie.Poster}
               title={movie.Title}
               year={movie.Year}
+              onClickTitle={() => {
+                setMovieId(movie.imdbID);
+                setIsModalShow(true);
+              }}
             />
           )
         }
@@ -63,6 +70,12 @@ function App() {
           </h4>
         }
       </div>
+
+      <MovieDetailModal
+        isShow={isModalShow}
+        movieId={movieId}
+        onClose={() => setIsModalShow(false)}
+      />
     </div>
   );
 }

@@ -1,0 +1,65 @@
+.detail-movie-modal {
+
+  .back-cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.6;
+    top: 0px;
+  }
+
+  .content-detail {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    background-color: #1c1c1c;
+    box-sizing: border-box;
+    width: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 300px;
+    }
+
+    .right-side {
+      display: block;
+      padding: 0px 30px;
+    }
+
+    button {
+      border: unset;
+      background-color: red;
+      color: white;
+      padding: 7px;
+      float: right;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: .8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .movie-title {
+      color: #f7f3f3;
+      font-size: 34px;
+      font-weight: normal;
+    }
+
+    span {
+      display: block;
+      color: #d0d0d0;
+      margin-bottom: 4px;
+    }
+
+    strong {
+      color: white;
+      font-size: 16px;
+      margin-right: 5px;
+    }
+  }
+}

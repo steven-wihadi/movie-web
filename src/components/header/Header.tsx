@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { HeaderTab, SEARCH_MOVIE_TAB, MY_FAVORITE_TAB } from './constant';
+import { HeaderTab, SEARCH_MOVIE_TAB, MY_FAVORITE_TAB, DEFAULT_MOVIE_KEYWORD } from './constant';
 import './style.scss';
 
 let timeId: any;
@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
   const [activeTab, setActiveTab] = useState(SEARCH_MOVIE_TAB);
-  const [keyword, setKeyword] = useState('army');
+  const [keyword, setKeyword] = useState(DEFAULT_MOVIE_KEYWORD);
 
   useEffect(() => {
     if (onChangeTab) { onChangeTab(SEARCH_MOVIE_TAB) }
@@ -19,6 +19,10 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
   const onClickTab = (tabName: HeaderTab ) => {
     setActiveTab(tabName);
     if (onChangeTab) { onChangeTab(tabName) }
+
+    if (tabName === SEARCH_MOVIE_TAB) {
+      setKeyword(DEFAULT_MOVIE_KEYWORD);
+    }
   }
 
   const onChangeInput = (e: any) => {
