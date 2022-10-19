@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Fetcher from './services/rest.service';
 
 function App() {
+  console.log('==REACT_APP_API_URL', process.env.REACT_APP_API_URL);
+  console.log('==REACT_APP_API_KEY', process.env.REACT_APP_API_KEY);
+
+  const test = async () => {
+    const rest = await Fetcher.get('/?s=marvel&page=2');
+    // const rest = await Fetcher.get('/');
+    console.log('===rest: ', rest);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={test}>Test</button>
     </div>
   );
 }
