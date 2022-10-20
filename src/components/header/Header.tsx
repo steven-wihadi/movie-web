@@ -65,16 +65,18 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
           </div>
         </div>
       </div>
-      
+
       { activeTab === SEARCH_MOVIE_TAB &&
         <div className='right-side'>
           <input
             type='text'
-            placeholder="Search..."
+            id='search'
             value={keyword}
+            className={keyword.trim().length ? 'freeze-trans' : ''}
             onChange={(e) => onChangeInput(e)}
             onKeyDown={(e) => onKeydown(e)}
           />
+          <label htmlFor='search'></label>
         </div>
       }
     </div>

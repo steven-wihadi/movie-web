@@ -37,6 +37,7 @@
     .tab-text {
       color: #fde8e8;
       padding: 12px;
+    
       cursor: pointer;
 
       &:hover {
@@ -54,8 +55,42 @@
 }
 
 .right-side {
+  position: relative;
+
   input {
     height: 26px;
-    padding: 0px 14px;
+    padding: 2px 14px;
+    color: transparent;
+
+    &:focus {
+      color: #333;
+      transition: color 0s ease .3s;
+    }
+
+    &:focus + label {
+      transform: rotateY(90deg);
+      transition: transform .3s ease-out;
+    }
+
+    &.freeze-trans {
+      color: #333;
+    }
+
+    &.freeze-trans + label {
+      transform: rotateY(90deg);
+    }
+  }
+
+  label {
+    background: url('../../assets/images/search.svg') center center no-repeat;
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-size: 20px;
+    transform-origin: 50% 50%;
+    transform: rotateY(0deg);
+    transition: transform .3s ease-out;
   }
 }
