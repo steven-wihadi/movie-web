@@ -33,7 +33,7 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
       if (onSearch) {
         onSearch(e.target.value);
       }
-    }, 3000);
+    }, 1500);
   }
 
   const onKeydown = (e: any) => {
