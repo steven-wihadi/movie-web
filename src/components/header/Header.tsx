@@ -16,7 +16,7 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
     if (onChangeTab) { onChangeTab(SEARCH_MOVIE_TAB) }
   }, []);
   
-  const onClickTab = (tabName: HeaderTab ) => {
+  const onClickTab = (tabName: HeaderTab) => {
     setActiveTab(tabName);
     if (onChangeTab) { onChangeTab(tabName) }
 
@@ -65,7 +65,9 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
           </div>
         </div>
       </div>
-      <div className='right-side'>
+      
+      { activeTab === SEARCH_MOVIE_TAB &&
+        <div className='right-side'>
           <input
             type='text'
             placeholder="Search..."
@@ -73,7 +75,8 @@ const Header = ({ onSearch, onChangeTab }: HeaderProps) => {
             onChange={(e) => onChangeInput(e)}
             onKeyDown={(e) => onKeydown(e)}
           />
-      </div>
+        </div>
+      }
     </div>
   );
 }
