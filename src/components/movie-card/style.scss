@@ -9,9 +9,17 @@
     position: absolute;
     right: 32px;
     border: unset;
+    width: 40px;
+    height: 36px;
     
     img {
       width: 30px;
+      cursor: pointer;
+
+      &:active {
+        width: 20px;
+        transition: width .1s ease-out;
+      }
     }
   }
 
